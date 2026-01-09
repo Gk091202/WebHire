@@ -1,135 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebHire</title>
-    
+
     <!-- Linking Bootstrap for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <style>
-        /* Styling the navigation bar */
-        .navbar {
-            background-color: #F0BB78 !important;
-            color: white;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin: 10px;
-            padding: 10px;
-        }
-        .navbar-brand {
-            color: #344CB7 !important;
-            font-weight: bold;
-        }
-        .nav-link {
-            color: white !important;
-            font-weight: bold;
-        }
-        .nav-link.active {
-            color: black !important;
-            font-weight: bold !important;
-            text-decoration: none !important;
-        }
-        
-        /* Styling the job cards */
-        .company-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin: 10px auto;
-        }
-        .card {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .page-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        
+      /* Styling the navigation bar */
+      .navbar {
+        background-color: #f0bb78 !important;
+        color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px;
+      }
+      .navbar-brand {
+        color: #344cb7 !important;
+        font-weight: bold;
+      }
+      .nav-link {
+        color: white !important;
+        font-weight: bold;
+      }
+      .nav-link.active {
+        color: black !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+      }
+
+      /* Styling the job cards */
+      .company-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 10px auto;
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+      .page-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+      }
     </style>
-    
+
     <script defer src="script.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">WebHire</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="fullstack.html">Full Stack Developer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="frontend.html">Front-End Developer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="backend.html">Back-End Developer</a></li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="index.html">WebHire</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="fullstack.html">Full Stack Developer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="frontend.html">Front-End Developer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="backend.html">Back-End Developer</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Page Title -->
     <div class="container mt-4">
-        <div class="page-title" id="page-title">Welcome to WebHire</div>
-        <br>
-        <div class="row row-cols-1 row-cols-lg-3 g-4" id="job-list">
-            <!-- Jobs will be inserted here by JavaScript -->
-        </div>
+      <div class="page-title" id="page-title">Welcome to WebHire</div>
+      <br />
+      <div class="row row-cols-1 row-cols-lg-3 g-4" id="job-list">
+        <!-- Jobs will be inserted here by JavaScript -->
+      </div>
     </div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Page Titles for different sections
-            const pageTitles = {
-                "index.html": "Welcome to WebHire",
-                "frontend.html": "Welcome to Front-End Jobs",
-                "backend.html": "Welcome to Back-End Jobs",
-                "fullstack.html": "Welcome to Full Stack Jobs"
-            };
-            
-            // Get the current page from the URL
-            let currentPage = window.location.pathname.split("/").pop() || "index.html";
-            
-            // Set the page title dynamically
-            document.getElementById("page-title").innerText = pageTitles[currentPage] || "Welcome to WebHire";
-            
-            // Job Listings Data
-            const jobs = {
-                "index.html": [
-                { companyImg: "https://media.licdn.com/dms/image/v2/C4D0BAQGGkbotFEw4wg/company-logo_100_100/company-logo_100_100/0/1652264978042/mindstix_software_labs_private_limited_logo?e=2147483647&v=beta&t=dYoXsHpvcHUv1WsuMW3jCias7q2_Lp9MRkntUsZHrYk", role: ".NET Developer", skills: ".NET, Cloud, OOP,...", experience: "2+ years", location: "Pune", applyLink: "https://in.linkedin.com/jobs/view/net-developer-create-world-class-web-experiences-at-scale-at-mindstix-software-labs-4145727694?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic" },
-                { companyImg: "https://media.licdn.com/dms/image/v2/D4D0BAQGFRDab9dUfXA/company-logo_100_100/company-logo_100_100/0/1736937973826/vertoz_logo?e=2147483647&v=beta&t=cQn0o9873Vm9oYLP5G5O108Mh194myVYrAomdz1JVZs", role: "Web Developer", skills: "MongoDB, Express, React, Node.js", experience: "3+ years", location: "Pune", applyLink: "#" },
-                { companyImg: "https://via.placeholder.com/100", role: "MERN Developer", skills: "MongoDB, Express, React, Node.js", experience: "3+ years", location: "Pune", applyLink: "#" },
-                { companyImg: "https://via.placeholder.com/100", role: "MERN Developer", skills: "MongoDB, Express, React, Node.js", experience: "3+ years", location: "Pune", applyLink: "#" },
-                { companyImg: "https://via.placeholder.com/100", role: "MERN Developer", skills: "MongoDB, Express, React, Node.js", experience: "3+ years", location: "Pune", applyLink: "#" },
-                { companyImg: "https://via.placeholder.com/100", role: "MERN Developer", skills: "MongoDB, Express, React, Node.js", experience: "3+ years", location: "Pune", applyLink: "#" },
 
-            ],   
-                "frontend.html": Array(12).fill({ companyImg: "https://via.placeholder.com/100", role: "Front-End Developer", skills: "HTML, CSS, JavaScript", experience: "1+ years", applyLink: "#" }),
-                "backend.html": Array(12).fill({ companyImg: "https://via.placeholder.com/100", role: "Back-End Developer", skills: "Node.js, Express, MongoDB", experience: "3+ years", applyLink: "#" }),
-                "fullstack.html": Array(12).fill({ companyImg: "https://via.placeholder.com/100", role: "Full Stack Developer", skills: "JavaScript, Node.js, React", experience: "2+ years", applyLink: "#" })
-            };
-            
-            // Get the container where job cards will be displayed
-            const jobList = document.getElementById("job-list");
-            
-            // Highlight the active navigation link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Loop through job listings and add them to the page
-            (jobs[currentPage] || jobs["index.html"]).forEach(job => {
-                const jobCard = `
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Page Titles for different sections
+        const pageTitles = {
+          "index.html": "Welcome to WebHire",
+          "frontend.html": "Welcome to Front-End Jobs",
+          "backend.html": "Welcome to Back-End Jobs",
+          "fullstack.html": "Welcome to Full Stack Jobs",
+        };
+
+        // Get the current page from the URL
+        let currentPage =
+          window.location.pathname.split("/").pop() || "index.html";
+
+        // Set the page title dynamically
+        document.getElementById("page-title").innerText =
+          pageTitles[currentPage] || "Welcome to WebHire";
+
+        // Job Listings Data
+        const jobs = {
+          "index.html": [
+            {
+              companyImg:
+                "https://media.licdn.com/dms/image/v2/C4D0BAQGGkbotFEw4wg/company-logo_100_100/company-logo_100_100/0/1652264978042/mindstix_software_labs_private_limited_logo?e=2147483647&v=beta&t=dYoXsHpvcHUv1WsuMW3jCias7q2_Lp9MRkntUsZHrYk",
+              role: ".NET Developer",
+              skills: ".NET, Cloud, OOP,...",
+              experience: "2+ years",
+              location: "Pune",
+              applyLink:
+                "https://in.linkedin.com/jobs/view/net-developer-create-world-class-web-experiences-at-scale-at-mindstix-software-labs-4145727694?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+            },
+            {
+              companyImg:
+                "https://media.licdn.com/dms/image/v2/D4D0BAQGFRDab9dUfXA/company-logo_100_100/company-logo_100_100/0/1736937973826/vertoz_logo?e=2147483647&v=beta&t=cQn0o9873Vm9oYLP5G5O108Mh194myVYrAomdz1JVZs",
+              role: "Web Developer",
+              skills: "MongoDB, Express, React, Node.js",
+              experience: "3+ years",
+              location: "Pune",
+              applyLink: "#",
+            },
+            {
+              companyImg: "https://via.placeholder.com/100",
+              role: "MERN Developer",
+              skills: "MongoDB, Express, React, Node.js",
+              experience: "3+ years",
+              location: "Pune",
+              applyLink: "#",
+            },
+            {
+              companyImg: "https://via.placeholder.com/100",
+              role: "MERN Developer",
+              skills: "MongoDB, Express, React, Node.js",
+              experience: "3+ years",
+              location: "Pune",
+              applyLink: "#",
+            },
+            {
+              companyImg: "https://via.placeholder.com/100",
+              role: "MERN Developer",
+              skills: "MongoDB, Express, React, Node.js",
+              experience: "3+ years",
+              location: "Pune",
+              applyLink: "#",
+            },
+            {
+              companyImg: "https://via.placeholder.com/100",
+              role: "MERN Developer",
+              skills: "MongoDB, Express, React, Node.js",
+              experience: "3+ years",
+              location: "Pune",
+              applyLink: "#",
+            },
+          ],
+          "frontend.html": Array(12).fill({
+            companyImg: "https://via.placeholder.com/100",
+            role: "Front-End Developer",
+            skills: "HTML, CSS, JavaScript",
+            experience: "1+ years",
+            applyLink: "#",
+          }),
+          "backend.html": Array(12).fill({
+            companyImg: "https://via.placeholder.com/100",
+            role: "Back-End Developer",
+            skills: "Node.js, Express, MongoDB",
+            experience: "3+ years",
+            applyLink: "#",
+          }),
+          "fullstack.html": Array(12).fill({
+            companyImg: "https://via.placeholder.com/100",
+            role: "Full Stack Developer",
+            skills: "JavaScript, Node.js, React",
+            experience: "2+ years",
+            applyLink: "#",
+          }),
+        };
+
+        // Get the container where job cards will be displayed
+        const jobList = document.getElementById("job-list");
+
+        // Highlight the active navigation link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+          }
+        });
+
+        // Loop through job listings and add them to the page
+        (jobs[currentPage] || jobs["index.html"]).forEach((job) => {
+          const jobCard = `
                     <div class="col">
                         <div class="card mb-4">
                             <img src="${job.companyImg}" class="company-logo" alt="Company Logo">
@@ -143,30 +223,74 @@
                         </div>
                     </div>
                 `;
-                jobList.innerHTML += jobCard;
-            });
+          jobList.innerHTML += jobCard;
         });
+      });
     </script>
 
-        <!-- Footer Section -->
-        <footer class="text-center text-white container" style="background-color: #F0BB78; padding: 20px; margin-top: 20px; margin-bottom: 20px; border-radius: 20px; max-width: 94%;">            
-            <p style="margin-bottom: 10px; font-size: 18px; font-weight: bold;">Connect with me on:</p>
-            <div>
-                <a href="https://www.linkedin.com/in/gaurav-koli-34400522a" target="_blank" style="margin: 0 10px;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30">
-                </a>
-                <a href="https://instagram.com/gauravkoligk?igshid=YmMyMTA2M2Y=" target="_blank" style="margin: 0 10px;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" width="30">
-                </a>
-                <a href="https://medium.com/@gaurav464" target="_blank" style="margin: 0 10px;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111505.png" alt="Medium" width="30">
-                </a>
-            </div>
-            <p style="margin-bottom: 10px; margin-top: 10px; font-size: 15px; font-weight: normal;">Made With ❤️ By Gaurav Koli</p>
-        </footer>
+    <!-- Footer Section -->
+    <footer
+      class="text-center text-white container"
+      style="
+        background-color: #f0bb78;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 20px;
+        max-width: 94%;
+      "
+    >
+      <p style="margin-bottom: 10px; font-size: 18px; font-weight: bold">
+        Connect with me on:
+      </p>
+      <div>
+        <a
+          href="https://www.linkedin.com/in/gaurav-koli-34400522a"
+          target="_blank"
+          style="margin: 0 10px"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+            alt="LinkedIn"
+            width="30"
+          />
+        </a>
+        <a
+          href="https://instagram.com/gauravkoligk?igshid=YmMyMTA2M2Y="
+          target="_blank"
+          style="margin: 0 10px"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+            alt="Instagram"
+            width="30"
+          />
+        </a>
+        <a
+          href="https://medium.com/@gaurav464"
+          target="_blank"
+          style="margin: 0 10px"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2111/2111505.png"
+            alt="Medium"
+            width="30"
+          />
+        </a>
+      </div>
+      <p
+        style="
+          margin-bottom: 10px;
+          margin-top: 10px;
+          font-size: 15px;
+          font-weight: normal;
+        "
+      >
+        Made With ❤️ By Gaurav Koli
+      </p>
+    </footer>
 
-    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
